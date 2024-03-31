@@ -1,4 +1,12 @@
 terraform {
+
+  cloud {
+    organization = "PearlWave_Labs"
+    workspaces {
+      name = "learn-tfc-aws"
+    }
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
