@@ -18,6 +18,24 @@ resource "aws_instance" "app_server" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "TerraformedServer02"
+    Name = var.instance_name // calling the variable defined below
   }
+}
+
+# declaring a variable
+variable "instance_name" {
+  description = "Value of the Name tag for the EC2 Instance"
+  type  = string
+  default = "TerraformedServer02"
+}
+
+# declaring outputs
+output "instance_id" {
+  description = "ID of the EC2 instance"
+  value       = aws_instance.app_server.id
+}
+
+output "instance_public_ip" {
+  description = "Public IP address of the EC2 instance"
+  value       = aws_instance.app_server.public_ip
 }
